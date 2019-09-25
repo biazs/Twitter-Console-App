@@ -45,12 +45,15 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TweetManager.cs" />
-    <Compile Include="TweetManagerFile.cs" />
-    <Compile Include="TweetManagerMemory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TweetManager\TweetManager.csproj">
+      <Project>{3118cf6b-70d9-4a2d-9c2c-4c06a2f4a561}</Project>
+      <Name>TweetManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

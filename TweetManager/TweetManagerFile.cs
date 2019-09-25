@@ -4,27 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Twitter_Console
+namespace TwitterManager
 {
-    class TweetManagerMemory : TweetManager
+    public class TweetManagerFile : TweetManager
     {
-        string[] tweets = new string[10];
-        int tweetCounter = 0;
-
+        private string fileName = "tweets.txt";
         public override string WriteTweet(string tweet)
         {
+            System.IO.File.AppendAllLines(fileName, new string[] { tweet });
 
-            tweets[tweetCounter++] = tweet;
             return "Tweet posted successfully.";
         }
 
         public override int TweetCounter()
         {
-            return tweetCounter;
+            return System.IO.File.ReadAllLines(fileName).Length;
         }
         public override string[] GetTweets()
         {
-            return tweets;
+            return System.IO.File.ReadAllLines(fileName);
         }
     }
 }

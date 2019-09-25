@@ -6,23 +6,25 @@ using System.Threading.Tasks;
 
 namespace Twitter_Console
 {
-    class TweetManagerFile : TweetManager
+    class TweetManagerMemory : TweetManager
     {
-        private string fileName = "tweets.txt";
+        string[] tweets = new string[10];
+        int tweetCounter = 0;
+
         public override string WriteTweet(string tweet)
         {
-            System.IO.File.AppendAllLines(fileName, new string[] { tweet });
 
+            tweets[tweetCounter++] = tweet;
             return "Tweet posted successfully.";
         }
 
         public override int TweetCounter()
         {
-            return System.IO.File.ReadAllLines(fileName).Length;
+            return tweetCounter;
         }
         public override string[] GetTweets()
         {
-            return System.IO.File.ReadAllLines(fileName);
+            return tweets;
         }
     }
 }

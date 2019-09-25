@@ -15,12 +15,12 @@ namespace Twitter_Console
             TweetManagerFile tm = new TweetManagerFile();
             do
             {
-                Console.WriteLine();
                 Console.WriteLine("------Main Menu------");
                 Console.WriteLine();
                 Console.WriteLine("1. View All Tweets");
                 Console.WriteLine("2. Post new Post");
-                Console.WriteLine("3. Exit");
+                Console.WriteLine("3. Search");
+                Console.WriteLine("4. Exit");
 
                 choice = Console.ReadLine();
 
@@ -39,10 +39,18 @@ namespace Twitter_Console
                     Console.WriteLine(msg);
                 }
 
+                if (choice == "3")
+                {
+                    Console.WriteLine("Enter search term: ");
+                    string search = Console.ReadLine();
+                    List<string> results = tm.Search(search);
+                    Console.WriteLine("Found " + results.Count + " tweets.");
+                }
+
                 Console.WriteLine("You entered {0}", choice);
 
             }
-            while (choice != "3");
+            while (choice != "4");
 
             Console.ReadLine();
 

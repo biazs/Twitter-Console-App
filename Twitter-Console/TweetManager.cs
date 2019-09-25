@@ -6,30 +6,32 @@ using System.Threading.Tasks;
 
 namespace Twitter_Console
 {
-    class TweetManager
+    public abstract class TweetManager
     {
-        string[] tweets = new string[10];
-        int tweetCounter = 0;
-
+        int maxTweets = 10;
         public string PostTweet(string tweet)
         {
             if (tweet.Length > 140)
                 return "Error: Tweet is longer than 140 chars.";
 
-            if (tweetCounter >= tweets.Length)
+            if (TweetCounter() >= maxTweets)
                 return "Error: Max tweets reached.";
 
-            tweets[tweetCounter++] = tweet;
-            return "Tweet posted successfully.";
-        }
+            return WriteTweet(tweet);
 
-        public int TweetCounter()
-        {
-            return tweetCounter;
         }
-        public string[] GetTweets()
+        public abstract string[] GetTweets();
+        public abstract int TweetCounter();
+        public abstract string WriteTweet(string tweet);
+        public List<string> Search(string searchTerm)
         {
-            return tweets;
+            List<string> results = new List<string>();
+            for (int i = 0; i < TweetCounter(); i++)
+            {
+                if (GetTweets()[i].Contains(searchTerm))
+                    results.Add(GetTweets()[i]);
+            }
+            return results;
         }
     }
 }

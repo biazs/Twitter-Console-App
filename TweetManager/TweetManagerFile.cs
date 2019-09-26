@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TwitterManager
+﻿
+namespace TweetManager
 {
     public class TweetManagerFile : TweetManager
     {
@@ -18,11 +13,17 @@ namespace TwitterManager
 
         public override int TweetCounter()
         {
-            return System.IO.File.ReadAllLines(fileName).Length;
+            if (System.IO.File.Exists(fileName))
+                return System.IO.File.ReadAllLines(fileName).Length;
+            else
+                return 0;
         }
         public override string[] GetTweets()
         {
-            return System.IO.File.ReadAllLines(fileName);
+            if (System.IO.File.Exists(fileName))
+                return System.IO.File.ReadAllLines(fileName);
+            else
+                return new string[0];
         }
     }
 }

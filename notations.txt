@@ -8,3 +8,13 @@ Centralizar em uma biblioteca para ser reusada.
 	Depois de clicar com botao direito na solution, Add, New project, Class Library
 	Clicar (botao direito) em References (do projeto principal), Add Reference, Projects, em seguida, marcar o projeto.
 	Incluir o using da nova DLL (no Program.cs)
+
+
+Seção 6: Twitter Form Interface
+
+- Building the Twitter Windows Form Interface
+	Botao direito na solution, Add, Criar a Windows Form App (.NET Framework)
+	Botao direito no novo projeto e clicar em 'Set as startUp project'
+
+
+
